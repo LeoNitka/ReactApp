@@ -1,14 +1,20 @@
 
 import './App.css';
-import Title from './components/title'
+import ItemListContainer from './components/ItemListContainer';
+import NavBar from './components/NavBar';
+
 
 function App() {
-  const list = ["god of war", "counter strike", "Resident Evil"]
+  const list = ["El hombre gris"]
   return (
     <div className="App">
       <header className="App-header">
-        <Title tittle='titulo desde el componente padre' list={list} />
+        
+        <NavBar />
+
       </header>
+      
+      <ItemListContainer tittle='titulo desde el componente padre' list={list} />
     </div>
   );
 }
