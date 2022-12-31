@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
+import { ItemDetail } from "./ItemDetail";
 
 const ItemDetailContainer = () => {
   const { itemId } = useParams();
@@ -13,10 +14,7 @@ const ItemDetailContainer = () => {
 
   return (
     <div>
-      <h2>Detalles de la pelicula: </h2>
-      titulo
-      descripción
-      fecha
+      <ItemDetail />
     </div>
   )
 }
