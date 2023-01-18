@@ -5,13 +5,15 @@ import "./Item.css"
 // para que el usuario pueda acceder a la ruta espicifica al clickear en el item,
 // en este caso lo envia a detalles del item.
 
-export const Item = ({ id, title, image}) => {
+export const Item = ({ id, title, poster_path }) => {
+
+  const imageUrl = "http://image.tmdb.org/t/p/w300" + poster_path;
   return (
     <div key={id} className='movieCard' >
       <Link to={"/item/" + id}>
-        <img src={image} alt={title} className='movieImage' />
-        <h3>{title}</h3>
+        <img src={imageUrl} alt={title} className='movieImage' />
       </Link>
+      <h3>{title}</h3>
     </div>
   )
 }

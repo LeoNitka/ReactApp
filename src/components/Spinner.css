@@ -1,0 +1,15 @@
+.spinner {
+    display: flex;
+    justify-content: center;
+    color: var(--color1);
+}
+
+.spinning {
+    animation: spinner .5s linear 1s infinite alternate slidein;
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
