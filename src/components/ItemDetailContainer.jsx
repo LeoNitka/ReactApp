@@ -1,19 +1,35 @@
-import { ItemList } from './ItemList';
-import './ItemListContainer.css'
-import { Search } from './Search';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getMovies } from "../fetchAPI";
+import { ItemDetail } from "./ItemDetail";
+import { Spinner } from "./Spinner";
+import './ItemDetailContainer.css';
 
-// Se le importa el estilo desde ItemListContainer.css.
-// Es importado para poder usarse en App.
-// Tiene importado el componente ItemList al cual le pasa las props.
-const ItemListContainer = () => {
+const ItemDetailContainer = () => {
 
-  return (
-    <div className='item-list'> 
-      <Search />
-      <h2>Listado de peliculas: </h2>
-      <ItemList />
+  const { itemId } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
+  const [movie, setMovie] = useState(null);
+  console.log(typeof(itemId));
+
+  useEffect(() => {
+    setIsLoading(true);
+    getMovies("/movie/" + itemId).then(data => {
+      setMovie(data);
+      setIsLoading(false);
+    })
+  }, [itemId])
+
+  if (isLoading) {
+    return <Spinner />
+  }
+
+  return ( 
+    <div className="detailsContainer">
+      <ItemDetail movie={movie} />
     </div>
+    
   )
 }
 
-export default ItemListContainer;
+export default ItemDetailContainer
